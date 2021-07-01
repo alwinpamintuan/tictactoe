@@ -19,9 +19,10 @@ function Cell({x, y}){
         setTicked(true)
         setTurn(!turn)
         setCount(count+1)
-
-        console.log(x, y)
     }
+
+    // Rerender board on change
+    useEffect(() => {}, [board])
 
     return(
         <div className={`cell ${turn? "O": "X"}`} onClick={handleClick} disabled={ticked}>
