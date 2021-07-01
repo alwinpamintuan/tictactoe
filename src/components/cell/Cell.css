@@ -1,0 +1,33 @@
+.cell {
+    border: 0.01px dotted rgb(196, 196, 196);
+    height: 8rem;
+    width: 8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell[disabled] {
+    pointer-events: none;
+}
+
+.O {
+    fill: rgb(13, 0, 255);
+}
+
+.X {
+    fill: rgb(255, 0, 0)
+}
+
+.O:hover {
+    border: 0.35rem solid rgb(13, 0, 255);
+}
+
+.X:hover {
+    border: 0.35rem solid rgb(255, 0, 0);
+}
+
+.O:hover, .X:hover {
+    transition: 0.2s;
+}
