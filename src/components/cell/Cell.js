@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import {GameContext} from '../context/GameContext'
 import './Cell.css'
 
@@ -20,9 +20,6 @@ function Cell({x, y}){
         setTurn(!turn)
         setCount(count+1)
     }
-
-    // Rerender board on change
-    useEffect(() => {}, [board])
 
     return(
         <div className={`cell ${turn? "O": "X"}`} onClick={handleClick} disabled={ticked}>

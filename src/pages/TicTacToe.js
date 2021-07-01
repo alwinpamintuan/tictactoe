@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import Board from '../components/board/Board'
 import {GameContext} from '../components/context/GameContext'
+import {zip} from '../components/helpers'
 
 const MAX_COUNT = 9
 const BOARD_SIZE = 3
@@ -10,10 +11,7 @@ function TicTacToe(){
     const [winner, setWinner] = useState()
 
     const isWon = (path) => {
-        const win = [
-                JSON.stringify(new Array(BOARD_SIZE).fill('X')),
-                JSON.stringify(new Array(BOARD_SIZE).fill('O'))
-            ]
+        const win = [JSON.stringify(new Array(BOARD_SIZE).fill('X')), JSON.stringify(new Array(BOARD_SIZE).fill('O'))]
         path = JSON.stringify(path)
 
         for(let i=0; i<win.length; i++)
@@ -25,16 +23,13 @@ function TicTacToe(){
         return false
     }
 
-    const zip = (arr, ...arrs) => {
-        return arr.map((val, i) => arrs.reduce((a, arr) => [...a, arr[i]], [val]));
-    }
-
     const GameOver = () => {
         const cells = document.querySelectorAll('.cell')
         
         for(let i=0; i<cells.length; i++) cells[i].setAttribute("disabled", "true")
     }
 
+    // Do this effect on board change to check if game has a winner
     useEffect(() => {
         const checkWinner = () => {
             if(count === MAX_COUNT) setWinner(null)
@@ -61,6 +56,7 @@ function TicTacToe(){
         checkWinner()
     }, [board, count])
 
+    // Do this effect if a winner is found or if draw
     useEffect(() => {
         if(winner !== undefined){
             winner? alert(`${winner} won!`) : alert("Draw")
