@@ -9,6 +9,7 @@ const BOARD_SIZE = 3
 function TicTacToe(){
     const {board, count} = useContext(GameContext)
     const [winner, setWinner] = useState()
+    const [winningLine, setWinningLine] = useState()
 
     const isWon = (path) => {
         const win = [JSON.stringify(new Array(BOARD_SIZE).fill('X')), JSON.stringify(new Array(BOARD_SIZE).fill('O'))]
@@ -41,14 +42,20 @@ function TicTacToe(){
                 const row = board[i]
                 const col = cols[i]
     
-                if(isWon(row) || isWon(col)) return true
+                if(isWon(row))
+                    setWinningLine([[i, 0], [i, 1], [i, 2]]);
+                else if(isWon(col))
+                    setWinningLine([[0, i], [1, i], [2, i]]);
             } 
     
             // Check diagonals
             const diagonal = [board[0][0], board[1][1], board[2][2]]
             const antidiagonal = [board[0][2], board[1][1], board[2][0]]
     
-            if(isWon(diagonal) || isWon(antidiagonal)) return true
+            if(isWon(diagonal))
+                setWinningLine([[0,0], [1,1], [2,2]]);
+            else if(isWon(antidiagonal))
+                setWinningLine([[0,2], [1,1], [2,0]]);
     
             return false
         }
@@ -67,7 +74,7 @@ function TicTacToe(){
     return(
         <>
             <h1>Tic Tac Toe <span className="dark-green">2P</span></h1>
-            <Board/>
+            <Board winningLine={winningLine}/>
         </>
     )
 }

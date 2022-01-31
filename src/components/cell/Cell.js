@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import {GameContext} from '../context/GameContext'
 import './Cell.css'
 
-function Cell({x, y}){
+function Cell({x, y, winner}){
     const [ticked, setTicked] = useState(false)
     const {turn, setTurn, board, setBoard, count, setCount} = useContext(GameContext)
 
@@ -22,7 +22,7 @@ function Cell({x, y}){
     }
 
     return(
-        <div className={`cell ${turn? "O": "X"}`} onClick={handleClick} disabled={ticked}>
+        <div className={`cell ${turn? "O": "X"} ${winner? "cell-won": ""}`} onClick={handleClick} disabled={ticked}>
             {
                 board[x][y] !== null
                 ? board[x][y] === "O"
