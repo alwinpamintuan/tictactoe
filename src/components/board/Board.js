@@ -1,10 +1,11 @@
-import React, {useContext, useEffect} from 'react'
-import {GameContext} from '../context/GameContext'
+import React, { useContext } from 'react'
+import { GameContext } from '../context/GameContext'
 import Cell from '../cell/Cell'
 import './Board.css'
+import { useEffect } from 'react/cjs/react.development'
 
 function Board({ winningLine }){
-    const {board} = useContext(GameContext)
+    const {board, reset, setBoard} = useContext(GameContext)
     
     const isArrayInArray = (arr, item) => {
         if(!arr) return false;
@@ -16,6 +17,10 @@ function Board({ winningLine }){
         });
         return contains;
     }
+
+    useEffect(() => {
+        setBoard(Array(3).fill(0).map(row => new Array(3).fill(null)))
+    }, [reset, setBoard])
     
     return(
         <div className="board">

@@ -1,10 +1,11 @@
 import React, {useState, useContext} from 'react';
+import { useEffect } from 'react/cjs/react.development';
 import {GameContext} from '../context/GameContext'
 import './Cell.css'
 
 function Cell({x, y, winner}){
     const [ticked, setTicked] = useState(false)
-    const {turn, setTurn, board, setBoard, count, setCount} = useContext(GameContext)
+    const {turn, setTurn, board, setBoard, count, setCount, reset} = useContext(GameContext)
 
     const handleClick = (e) => {
         e.preventDefault()
@@ -20,6 +21,10 @@ function Cell({x, y, winner}){
         setTurn(!turn)
         setCount(count+1)
     }
+
+    useEffect(() => {
+        setTicked(false)
+    }, [reset])
 
     return(
         <div className={`cell ${turn? "O": "X"} ${winner? "cell-won": ""}`} onClick={handleClick} disabled={ticked}>

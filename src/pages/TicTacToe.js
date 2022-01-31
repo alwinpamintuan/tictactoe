@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Board from '../components/board/Board'
 import Header from '../components/header/Header'
+import Toolbar from '../components/toolbar/Toolbar'
 import { GameContext } from '../components/context/GameContext'
 import { zip } from '../components/helpers'
 
@@ -8,7 +9,7 @@ const MAX_COUNT = 9
 const BOARD_SIZE = 3
 
 function TicTacToe(){
-    const {board, count} = useContext(GameContext)
+    const {board, count, reset, setCount, setTurn} = useContext(GameContext)
     const [winner, setWinner] = useState()
     const [winningLine, setWinningLine] = useState()
 
@@ -28,7 +29,7 @@ function TicTacToe(){
     const GameOver = () => {
         const cells = document.querySelectorAll('.cell')
 
-        for(let i=0; i<cells.length; i++) cells[i].setAttribute("disabled", "true")
+        for(let i=0; i<cells.length; i++) cells[i].setAttribute("disabled", "")
     }
 
     // Do this effect on board change to check if game has a winner
@@ -71,11 +72,23 @@ function TicTacToe(){
             GameOver()
         }
     }, [winner])
+    
+    // Reset
+    useEffect(() => {
+        setWinner(undefined)
+        setWinningLine(undefined)
+        setCount(0)
+        setTurn(false)
+
+        const cells = document.querySelectorAll('.cell')
+        for(let i=0; i<cells.length; i++) cells[i].removeAttribute('disabled')
+    }, [reset, setCount, setTurn])
 
     return(
         <div>
             <Header/>
             <Board winningLine={winningLine}/>
+            <Toolbar/>
         </div>
     )
 }
