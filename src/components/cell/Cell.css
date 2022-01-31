@@ -1,8 +1,9 @@
 .cell {
-    border: 0.01px dotted rgb(196, 196, 196);
+    border-radius: 0.25rem;
     height: 8rem;
     width: 8rem;
 
+    background-color: #162936;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,4 +31,9 @@
 
 .O:hover, .X:hover {
     transition: 0.2s;
+}
+
+svg.O, svg.X {
+    height: 50%;
+    width: 50%;
 }

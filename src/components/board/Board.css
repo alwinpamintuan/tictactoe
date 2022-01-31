@@ -1,10 +1,5 @@
 .board {
-    height: 100vh;
-
     display: grid;
     grid-template-columns: 8rem 8rem 8rem;
-    grid-template-rows: 8rem 8rem 8rem;
-
-    align-content: center;
-    justify-content: center;
+    grid-gap: 1rem;
 }

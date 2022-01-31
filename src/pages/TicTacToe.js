@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Board from '../components/board/Board'
-import {GameContext} from '../components/context/GameContext'
-import {zip} from '../components/helpers'
+import { GameContext } from '../components/context/GameContext'
+import { zip } from '../components/helpers'
 
 const MAX_COUNT = 9
 const BOARD_SIZE = 3
@@ -65,7 +65,10 @@ function TicTacToe(){
     }, [winner])
 
     return(
-        <Board/>
+        <>
+            <h1>Tic Tac Toe <span className="dark-green">2P</span></h1>
+            <Board/>
+        </>
     )
 }
 
