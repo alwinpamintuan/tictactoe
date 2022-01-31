@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Board from '../components/board/Board'
+import Header from '../components/header/Header'
 import { GameContext } from '../components/context/GameContext'
 import { zip } from '../components/helpers'
 
@@ -26,7 +27,7 @@ function TicTacToe(){
 
     const GameOver = () => {
         const cells = document.querySelectorAll('.cell')
-        
+
         for(let i=0; i<cells.length; i++) cells[i].setAttribute("disabled", "true")
     }
 
@@ -72,10 +73,10 @@ function TicTacToe(){
     }, [winner])
 
     return(
-        <>
-            <h1>Tic Tac Toe <span className="dark-green">2P</span></h1>
+        <div>
+            <Header/>
             <Board winningLine={winningLine}/>
-        </>
+        </div>
     )
 }
 
