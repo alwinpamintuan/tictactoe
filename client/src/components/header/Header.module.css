@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.gamebar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 0.25rem;
+  width: 50%;
+
+  color: orange;
+}
+
+.blue {
+  color: blue;
+}
+
+.fade {
+  transition: 0.5s;
+}

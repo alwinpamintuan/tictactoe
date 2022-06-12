@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --dark-bg: #091217;
+  --dark-grayblue: #162936;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Work Sans', sans-serif;
+}
+
+body {
+  display: block;
+  background: var(--dark-bg);
+  height: 100vh;
+}
+
+h1 {
+  color: white;
+}
+
+.App {
+  margin: 0 auto;
+  max-width: 60%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.dark-green {
+  color: darkgreen;
+}
