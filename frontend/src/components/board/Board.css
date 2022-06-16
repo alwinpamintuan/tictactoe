@@ -1,5 +1,0 @@
-.board {
-    display: grid;
-    grid-template-columns: 8rem 8rem 8rem;
-    grid-gap: 1rem;
-}
